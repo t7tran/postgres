@@ -4,7 +4,6 @@ RUN echo '\n\
       if [[ -n `ls -1 /docker-entrypoint-initdb.d/*.{sh,sql} 2>/dev/null` ]]; then\n\
         docker_verify_minimum_env\n\
         ls /docker-entrypoint-initdb.d/ > /dev/null\n\
-        pg_setup_hba_conf\n\
         export PGPASSWORD="${PGPASSWORD:-$POSTGRES_PASSWORD}"\n\
         docker_temp_server_start "$@"\n\
         docker_process_init_files /docker-entrypoint-initdb.d/*\n\
@@ -33,8 +32,6 @@ EOSQL\n\
         }\n\
     ' > /tmp/else.txt && \
     sed -i '/# create initial database/r /tmp/else.txt' /usr/local/bin/docker-entrypoint.sh
-
-USER postgres
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["postgres"]
