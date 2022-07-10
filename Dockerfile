@@ -1,6 +1,6 @@
-FROM postgres:13.4
+FROM postgres:13.7-alpine
 
-RUN echo '\n\
+RUN echo -e '\n\
       if [[ -n `ls -1 /docker-entrypoint-initdb.d/*.{sh,sql} 2>/dev/null` ]]; then\n\
         docker_verify_minimum_env\n\
         ls /docker-entrypoint-initdb.d/ > /dev/null\n\
@@ -15,7 +15,7 @@ RUN echo '\n\
     ' > /tmp/else.txt && \
     sed -i '/Skipping initialization/r /tmp/else.txt' /usr/local/bin/docker-entrypoint.sh && \
     sed -i '/Skipping initialization/d' /usr/local/bin/docker-entrypoint.sh && \
-    echo '\n\
+    echo -e '\n\
         setup_db_if_not_exists() {\n\
             local dbAlreadyExists\n\
             dbAlreadyExists="$(\n\
