@@ -1,4 +1,4 @@
-FROM postgres:13.7-alpine
+FROM postgres:13.11-alpine
 
 RUN echo -e '\n\
       if [[ -n `ls -1 /docker-entrypoint-initdb.d/*.{sh,sql} 2>/dev/null` ]]; then\n\
