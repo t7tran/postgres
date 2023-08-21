@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  postgres:
+    image: ghcr.io/t7tran/postgres:14.8.0
+    build: .
+    read_only: true
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - data:/var/lib/postgresql/data
+      - ./00-init.sh:/docker-entrypoint-initdb.d/00-init.sh:ro
+      - ./99-init.sql:/docker-entrypoint-initdb.d/99-init.sql:ro
+      - type: tmpfs
+        target: /var/run/postgresql
+        tmpfs:
+          mode: 01777
+
+volumes:
+  data:
+    labels:
+      - "keep=true"
+      - "app=postgres"
