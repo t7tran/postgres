@@ -1,6 +1,7 @@
 FROM postgres:14.8-alpine
 
 RUN echo -e '\n\
+EOM\n\
       if [[ -n `ls -1 /docker-entrypoint-initdb.d/*.{sh,sql} 2>/dev/null` ]]; then\n\
         docker_verify_minimum_env\n\
         ls /docker-entrypoint-initdb.d/ > /dev/null\n\
@@ -12,6 +13,7 @@ RUN echo -e '\n\
         echo\n\
         echo "PostgreSQL init process complete; ready for start up."\n\
       fi\n\
+cat <<-EOM\n\
     ' > /tmp/else.txt && \
     sed -i '/Skipping initialization/r /tmp/else.txt' /usr/local/bin/docker-entrypoint.sh && \
     sed -i '/Skipping initialization/d' /usr/local/bin/docker-entrypoint.sh && \
