@@ -1,4 +1,4 @@
-FROM postgres:14.9-alpine
+FROM postgres:15.4-alpine
 
 COPY ./rootfs /
 
