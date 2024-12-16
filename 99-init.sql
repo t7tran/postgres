@@ -17,4 +17,4 @@ ON DATABASE sample
 TO sample;
 
 \c sample
-create extension if not exists "pgcrypto"1;
+create extension if not exists "pgcrypto";
