@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: ghcr.io/t7tran/postgres:18.0.0
+    image: ghcr.io/t7tran/postgres:18.3.0
     build: .
     read_only: true
     environment:

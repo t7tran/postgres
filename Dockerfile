@@ -1,11 +1,11 @@
-FROM postgres:18.0-alpine
+FROM postgres:18.3-alpine
 
 COPY ./rootfs /
 
 # Install support for pgvector extension
 RUN apk add --no-cache git build-base clang19 llvm19-dev && \
     cd /tmp && \
-    git clone --branch v0.8.1 https://github.com/pgvector/pgvector.git && \
+    git clone --branch v0.8.2 https://github.com/pgvector/pgvector.git && \
     cd pgvector && \
     make && \
     make install && \
