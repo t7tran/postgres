@@ -2,6 +2,6 @@
 
 Extension of the official PostgreSQL with support for script execution on every startup
 
-    docker pull ghcr.io/t7tran/postgres:18.3.0
+    docker pull ghcr.io/t7tran/postgres:18.4.0
 
 All scripts mounted under `/docker-entrypoint-initdb.d/` are always executed on every startup.
